@@ -26,7 +26,7 @@ from control import *
 R = 1000     # ohms
 C = 1.6E-6   # farads
 t = 0.0005   # seconds
-k = 1      # gain, a.u.
+k = 1        # gain, a.u.
 
 p0 = (R,C,t,k)
 
