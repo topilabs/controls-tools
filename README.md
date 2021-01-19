@@ -9,16 +9,16 @@ Both of these methods can be used together to present captured data, fit it to a
 
 Similarities to [impedance.py](https://github.com/ECSHackWeek/impedance.py): Originally the fitting technique based on curve-fit was copied exact, but then replaced with lmfit.Model to provide an easier interface to the parameter bounds and initialization. lmfit.Model also contains built-in provisions for fitting complex numbers. 
 
-### Dependencies
+## Dependencies
 - bokeh - everything could be done with matplotlib as well but I'm favoring bokeh at the moment due to its beautiful generation of vector graphics. 
-- lmfit
+- [lmfit](https://lmfit.github.io/lmfit-py/model.html)
 - [python-control](https://github.com/python-control/python-control)
 - inspect
 - numpy
 
-### Example
+## An Example
 
-As an example use case, I collected the data shown in the graph below for a system with a delayed low-pass filter.
+As an example use case, frequency response data was collected for a system behaving as a delayed low-pass filter. The following transfer function is also defined to approximate the behavior. Note the implementation of the delay using the Pade approximation available in python-controls! 
 ```py
 from control import *
 %config InlineBackend.figure_format = 'retina'
@@ -40,7 +40,7 @@ bode_plot(my_tf(*p0));
 ```
 ![bode_plot](documentation/media/bode_plot.png)
 
-**This library** offers the ability to additionally overlay this plot onto your acquired frequency data. 
+But I found it to be a little lacking when I want to compare this tf to my data, or further want to **fit** this tf to my data. **This library** offers the ability to additionally overlay the theoretical response of the transfer function onto  acquired frequency data. 
 
 First import the library:
 ```py
@@ -100,5 +100,5 @@ bode_overlay(fol,gol,pol,
 ```
 ![bode_overlay](documentation/media/bode_overlay_w_results.png)
 
-
+Enjoy!
 
