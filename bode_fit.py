@@ -112,28 +112,4 @@ class bode_fit:
         return self.result
 
 
-# The first scipy curve fitting method. Its not complex-aware, and lmfit has a nicer interface
-# to control parameters. 
-
-"""
-from scipy.optimize import curve_fit
-
-def bode_fit(freqs_hz, gains_au, phases_degs, system, initial_guess):
-    
-    Zmeas = convert_magnitude_phase_to_impedance(gains_au, phases_degs)
-
-    # Callable function - must take independent variable as first argument, and remaining tf parameters as additional arguments
-    def sys_wrapper (f, system):
-        f = np.array(f)
-        def wrapped(f, *args):
-            x = f*(2*np.pi)*1j
-            Z = evalfr(sys(*args), x)
-            return np.hstack([Z.real, Z.imag])
-        return wrapped
-
-    popt, pcov = curve_fit(sys_wrapper(freqs_hz, system), freqs_hz, np.hstack([Zmeas.real, Zmeas.imag]), 
-        p0=initial_guess, bounds=((0,0,0.0002,0,0,0),(2000,1,0.0008,1000000,5,100)))
-    
-    return popt
-"""
 
